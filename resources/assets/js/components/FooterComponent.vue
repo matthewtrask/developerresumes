@@ -1,5 +1,8 @@
-<style lang='scss'>
-
+<style lang='scss' scoped>
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+    }
 </style>
 <template>
     <div>
