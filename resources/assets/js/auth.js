@@ -42,13 +42,12 @@ export default {
     axios.post('oauth/token', {
       grant_type: 'password',
       client_id: 2,
-      client_secret: '',
+      client_secret: 'X71IYtz6OeoASzkLLW34BjxVEeVrAWjzFuYrChuM',
       username: email,
       password: password,
       rememberMe: rememberMe,
     }).then(response => {
       context.error = false;
-      console.log(response);
       localStorage.setItem('id_token', response.data.access_token);
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token');
       this.check();

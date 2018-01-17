@@ -3,16 +3,8 @@
 </style>
 <template>
     <div>
-        <div class="flex">
-            <div class="flex-1 px-4 py-2 m-2">
-                <h4 class="font-sans text-3xl text-white tracking-wide"><a class="no-underline text-white tracking-wide" href="/">Developer Resumes</a></h4>
-            </div>
-            <div class="flex-1 text-center px-4 py-2 m-2"></div>
-            <div class="flex-1 text-center px-4 py-2 m-2">
-                <a class="no-underline text-white tracking-wide" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                     Login</a>
-            </div>
-        </div>
+        <dr-header></dr-header>
+
         <h2 class="font-sans text-5xl text-white tracking-wide">Submit your resume and get feedback from developers, managers and other professionals.</h2>
 
         <p class="font-sans text-1xl text-white pt-4 pb-4 tracking-wide">We all know how hard it is to get that first developer job. The hoops you have to jump through are insane sometimes. Let's try to make that a little bit easier.</p>
@@ -37,10 +29,13 @@
 </template>
 <script>
   import axios from 'axios';
+  import auth from '../auth.js';
   import DrFooter from './FooterComponent.vue';
+  import DrHeader from './HeaderComponent.vue';
 
   export default {
     components: {
+      DrHeader,
       DrFooter,
     }
   };
