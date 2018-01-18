@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ResumeUploadRequest;
 use App\Models\Resume;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
@@ -74,14 +75,22 @@ class ResumeController extends Controller
     }
 
     /**
-     * @param int $resumeId
+     * @param Request $request
+     * @param int     $resumeId
      *
      * @return JsonResponse
      */
-    public function deleteResume(int $resumeId): JsonResponse
+    public function deleteResume(Request $request, int $resumeId): JsonResponse
     {
-        $this->resume->destroy([$resumeId]);
+        $user = $request->user();
 
-        return response()->json(['success'], 204);
+        $resume = $this->resume
+            ->where('user_id', $user->id)
+            ->where('id', $resumeId)
+            ->findOrFail();
+
+        $resume->delete();
+
+        return response()->json([], 204);
     }
 }
