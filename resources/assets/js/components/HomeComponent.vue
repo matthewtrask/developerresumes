@@ -3,7 +3,7 @@
 </style>
 <template>
     <div>
-        <dr-header></dr-header>
+        <dr-header :user="user"></dr-header>
 
         <h2 class="font-sans text-5xl text-white tracking-wide">Submit your resume and get feedback from developers, managers and other professionals.</h2>
 
@@ -34,6 +34,17 @@
   import DrHeader from './HeaderComponent.vue';
 
   export default {
+    created() {
+      return auth.check();
+    },
+
+    data() {
+      return {
+        auth: auth,
+        user: auth.user || null,
+      };
+    },
+
     components: {
       DrHeader,
       DrFooter,

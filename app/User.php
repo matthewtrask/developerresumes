@@ -34,4 +34,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class, 'user_id', 'id');
     }
+
+    public function userId() : int
+    {
+        return $this->id;
+    }
+
+    public function getEmail() : string
+    {
+        return $this->email;
+    }
 }

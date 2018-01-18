@@ -18,7 +18,7 @@ export default {
         },
       }).then(response => {
         this.user.authenticated = true;
-        this.user.profile = response.data.data;
+        this.user.profile = response.data.data.profile;
       });
     }
   },
