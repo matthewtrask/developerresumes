@@ -10,7 +10,7 @@
 </style>
 <template>
     <div>
-        <dr-header></dr-header>
+        <dr-header :user="null"></dr-header>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col pin-x w-2/3">
             <div class="mb-4">
                 <h3 class="font-sans tracking-wide">Developer Resumes</h3>
@@ -52,6 +52,10 @@
 
   export default {
 
+    created() {
+      return auth.check();
+    },
+
     data() {
       return {
         username: '',
@@ -59,6 +63,8 @@
         rememberMe: false,
         formError: false,
         success: false,
+        auth: auth,
+        user: auth.user,
       };
     },
 
