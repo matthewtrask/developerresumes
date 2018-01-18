@@ -16,7 +16,7 @@
               <p class="float-left font-sans text-3xl tracking-wide">Resume and Feedback</p>
           </div>
           <div class="flex-1 text-white text-center px-4 py-2 m-2">
-              <p class="float-left font-sans text-3xl tracking-wide">User Info</p>
+              <p class="float-left font-sans tracking-wide"><span class="text-3xl">User Info |</span>  <span class="text-blue-light cursor-pointer" @click="editInfo"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</span></p>
               <hr>
               <br><br>
               <ul class="list-reset">
@@ -72,7 +72,11 @@
         }).catch(error => {
           console.error(error);
         })
-      }
+      },
+
+      editInfo() {
+        console.log('clicked');
+      },
     },
 
     components: {

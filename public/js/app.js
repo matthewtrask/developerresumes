@@ -49616,6 +49616,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).catch(function (error) {
         console.error(error);
       });
+    },
+    editInfo: function editInfo() {
+      console.log('clicked');
     }
   },
 
@@ -49663,11 +49666,24 @@ var render = function() {
           "div",
           { staticClass: "flex-1 text-white text-center px-4 py-2 m-2" },
           [
-            _c(
-              "p",
-              { staticClass: "float-left font-sans text-3xl tracking-wide" },
-              [_vm._v("User Info")]
-            ),
+            _c("p", { staticClass: "float-left font-sans tracking-wide" }, [
+              _c("span", { staticClass: "text-3xl" }, [_vm._v("User Info |")]),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "text-blue-light cursor-pointer",
+                  on: { click: _vm.editInfo }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-pencil-square-o",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" Edit")
+                ]
+              )
+            ]),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
