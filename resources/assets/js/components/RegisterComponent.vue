@@ -6,7 +6,7 @@
 </style>
 <template>
     <div>
-        <dr-header :user="null"></dr-header>
+        <dr-header :user="user"></dr-header>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col pin-x w-2/3">
 
             <div class="bg-red-lightest border border-red-light text-red-dark px-4 py-3 rounded relative" role="alert" v-if="showConductError === true">
@@ -93,7 +93,7 @@
         showTermsError: false,
         formSuccess: false,
         auth: auth,
-        user: auth.user,
+        user: auth.user || null,
       };
     },
 

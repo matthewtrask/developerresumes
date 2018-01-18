@@ -16,6 +16,12 @@ class ProfileTransformer extends TransformerAbstract
     {
         return [
             'name' => $profile->fullName(),
+            'preferredName' => $profile->getPreferredName(),
+            'email' => $profile->getEmail(),
+            'location' => $profile->getLocation(),
+            'blog' => $profile->getBlog(),
+            'twitter' => $profile->getTwitter(),
+            'github' => $profile->getGithub(),
         ];
     }
 }
