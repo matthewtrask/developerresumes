@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Models\Profile;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -33,6 +32,14 @@ class User extends Authenticatable
     public function profile() : HasOne
     {
         return $this->hasOne(Profile::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function resume(): HasOne
+    {
+        return $this->hasOne(Resume::class, 'user_id', 'id');
     }
 
     public function userId() : int

@@ -19,3 +19,8 @@ Route::get('/{vue_capture?}', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/resumes/{id}/download', 'ResumeController@downloadResume')->name('downloadResume');
+Route::get('/resumes/{id}', 'ResumeController@getResume')->name('viewResume');
+Route::post('/resumes', 'ResumeController@upload')->name('uploadResume');
+Route::delete('/resumes/{id}', 'ResumeController@delete')->name('deleteResume');
