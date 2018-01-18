@@ -10,7 +10,7 @@
 </style>
 <template>
     <div>
-        <dr-header :user="null"></dr-header>
+        <dr-header :user="user"></dr-header>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col pin-x w-2/3">
             <div class="mb-4">
                 <h3 class="font-sans tracking-wide">Developer Resumes</h3>
@@ -64,7 +64,7 @@
         formError: false,
         success: false,
         auth: auth,
-        user: auth.user,
+        user: auth.user || null,
       };
     },
 

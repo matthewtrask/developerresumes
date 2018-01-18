@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 import HomeComponent from './components/HomeComponent.vue';
 import RegisterComponent from './components/RegisterComponent.vue';
 import LoginComponent from './components/LoginComponent.vue';
+import ProfileComponent from './components/ProfileComponent.vue';
 import auth from './auth.js';
 
 const routes = [
@@ -19,7 +20,15 @@ const routes = [
     path: '/login',
     component: LoginComponent,
     name: 'Login',
-  }
+  },
+  {
+    path: '/profile',
+    component: ProfileComponent,
+    name: 'Profile',
+    meta: {
+      requiresAuth: false,
+    }
+  },
 ];
 
 const router = new VueRouter({
@@ -29,10 +38,8 @@ const router = new VueRouter({
   mode: 'history',
 });
 
-
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth) && auth.user.authenticated === false) {
-    console.log('hello world');
+  if (to.matched.some(record => record.meta.requiresAuth) && auth.user.authenticated !== true) {
     next({ path: '/login', query: { redirect: to.fullPath }});
   } else {
     next();
