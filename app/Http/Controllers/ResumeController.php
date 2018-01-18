@@ -4,22 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ResumeUploadRequest;
 use App\Models\Resume;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Http\JsonResponse;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
     /**
+     * @var Resume
+     */
+    protected $resume;
+
+    /**
+     * ResumeController constructor.
+     *
+     * @param Resume $resume
+     */
+    public function __construct(Resume $resume)
+    {
+        $this->resume = $resume;
+    }
+
+    /**
      * @param int $resumeId
      *
-     * @return View
+     * @return JsonResponse
      */
-    public function getResume(int $resumeId): View
+    public function getResume(int $resumeId): JsonResponse
     {
-        $resume = Resume::findOrFail($resumeId);
+        $resume = $this->resume->findOrFail($resumeId);
 
-        return view('resume', ['resume' => $resume]);
+        return response()->json($resume->toArray());
     }
 
     /**
@@ -29,7 +43,7 @@ class ResumeController extends Controller
      */
     public function downloadResume(int $resumeId)
     {
-        $resume = Resume::findOrFail($resumeId);
+        $resume = $this->resume->findOrFail($resumeId);
 
         return response()->file($resume->resume);
     }
@@ -38,37 +52,36 @@ class ResumeController extends Controller
      * @param ResumeUploadRequest $request
      *
      * @return JsonResponse
+     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
      */
     public function upload(ResumeUploadRequest $request): JsonResponse
     {
         $user = $request->user();
         $file = $request->file('resume');
 
-        $path = $file->storeAs(
-            snake_case($user->name),
-            $this->getNewFilename($file)
+        $path = Storage::putFileAs(
+            'resumes/'. snake_case($user->name),
+            $file,
+            'resume.' . $file->guessExtension()
         );
 
-        $resume = Resume::create([
+        $resume = $this->resume->fill([
             'user_id' => $user->id,
             'resume'  => $path
-        ]);
+        ])->save();
 
         return response()->json($resume);
     }
 
     /**
-     * @param UploadedFile $file
+     * @param int $resumeId
      *
-     * @return string
+     * @return JsonResponse
      */
-    protected function getNewFilename(UploadedFile $file): string
+    public function deleteResume(int $resumeId): JsonResponse
     {
-        $ext = $file->guessExtension();
+        $this->resume->destroy([$resumeId]);
 
-        return sprintf(
-            'resume.%s',
-            $ext
-        );
+        return response()->json(['success'], 204);
     }
 }
