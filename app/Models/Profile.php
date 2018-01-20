@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -48,6 +47,13 @@ class Profile extends Model
     public function getBlog() : string
     {
         return $this->blog_link;
+    }
+
+    public function getGithubUsername()
+    {
+        $link = preg_split('#/#', $this->getGithub());
+
+        return $link[3];
     }
 }
 

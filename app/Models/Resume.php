@@ -55,4 +55,14 @@ class Resume extends Model
             'created_at' => $this->created_at->toIso8601String()
         ];
     }
+
+    public function getId() : int
+    {
+        return $this->id;
+    }
+
+    public function getLink() : string
+    {
+        return $this->resume;
+    }
 }
