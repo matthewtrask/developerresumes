@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Resume
@@ -42,6 +43,11 @@ class Resume extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function feedback() : HasMany
+    {
+        return $this->hasMany(Feedback::class, 'resume_id', 'id');
     }
 
     /**

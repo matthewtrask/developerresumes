@@ -35,7 +35,7 @@ class ResumeController extends Controller
         $this->response = $response;
     }
 
-    public function index()
+    public function index() : Response
     {
         $resumes = Resume::all();
 
@@ -48,11 +48,12 @@ class ResumeController extends Controller
      *
      * @return JsonResponse
      */
-    public function getResume(int $resumeId): JsonResponse
+    public function getResume(int $resumeId) : Response
     {
         $resume = $this->resume->findOrFail($resumeId);
 
-        return response()->json($resume->toArray());
+        return $this->response
+            ->setContent(fractal($resume)->transformWith($this->resumeTransformer)->parseIncludes(['profile', 'feedback'])->toArray());
     }
 
     /**
