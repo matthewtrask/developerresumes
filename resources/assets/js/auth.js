@@ -7,14 +7,15 @@ export default {
     profile: null,
   },
 
-
   check() {
     let token = localStorage.getItem('id_token');
     if (token !== null) {
 
-      axios.get('api/user', {
+      axios.get('/api/user', {
         headers: {
-          'Authorization': 'Bearer ' + token
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-type': 'application/json',
         },
       }).then(response => {
         this.user.authenticated = true;

@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ResumeUploadRequest;
 use App\Models\Resume;
+use App\Transformers\ResumeTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
@@ -16,13 +19,28 @@ class ResumeController extends Controller
     protected $resume;
 
     /**
-     * ResumeController constructor.
-     *
-     * @param Resume $resume
+     * @var ResumeTransformer
      */
-    public function __construct(Resume $resume)
+    protected $resumeTransformer;
+
+    /**
+     * @var Response
+     */
+    protected $response;
+
+    public function __construct(Resume $resume, ResumeTransformer $resumeTransformer, Response $response)
     {
         $this->resume = $resume;
+        $this->resumeTransformer = $resumeTransformer;
+        $this->response = $response;
+    }
+
+    public function index() : Response
+    {
+        $resumes = Resume::all();
+
+        return $this->response
+            ->setContent(fractal($resumes)->transformWith($this->resumeTransformer)->parseIncludes('profile')->toArray());
     }
 
     /**
@@ -30,11 +48,12 @@ class ResumeController extends Controller
      *
      * @return JsonResponse
      */
-    public function getResume(int $resumeId): JsonResponse
+    public function getResume(int $resumeId) : Response
     {
         $resume = $this->resume->findOrFail($resumeId);
 
-        return response()->json($resume->toArray());
+        return $this->response
+            ->setContent(fractal($resume)->transformWith($this->resumeTransformer)->parseIncludes(['profile', 'feedback'])->toArray());
     }
 
     /**

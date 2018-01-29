@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Resume
@@ -44,6 +45,11 @@ class Resume extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function feedback() : HasMany
+    {
+        return $this->hasMany(Feedback::class, 'resume_id', 'id');
+    }
+
     /**
      * @return array
      */
@@ -54,5 +60,15 @@ class Resume extends Model
             'path'       => $this->getAttribute('resume'),
             'created_at' => $this->created_at->toIso8601String()
         ];
+    }
+
+    public function getId() : int
+    {
+        return $this->id;
+    }
+
+    public function getLink() : string
+    {
+        return $this->resume;
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Transformers\UserTransformer;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -31,6 +31,7 @@ class UsersController extends Controller
         $user = User::find($request->user()->userId());
 
         return $this->response
+            ->header('Content-type', 'application/json')
             ->setStatusCode(200)
             ->setContent(fractal()->item($user)->transformWith($this->transformer)->parseIncludes('profile')->toArray());
 

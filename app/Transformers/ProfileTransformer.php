@@ -22,6 +22,7 @@ class ProfileTransformer extends TransformerAbstract
             'blog' => $profile->getBlog(),
             'twitter' => $profile->getTwitter(),
             'github' => $profile->getGithub(),
+            'githubUsername' => $profile->getGithubUsername(),
         ];
     }
 }
