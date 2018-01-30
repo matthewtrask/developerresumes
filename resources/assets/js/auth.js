@@ -5,6 +5,8 @@ export default {
   user: {
     authenticated: false,
     profile: null,
+    resume: null,
+    feedback: null,
   },
 
   check() {
@@ -20,6 +22,8 @@ export default {
       }).then(response => {
         this.user.authenticated = true;
         this.user.profile = response.data.data.profile;
+        this.user.resume = response.data.data.resume;
+        this.user.feedback = response.data.data.feedback;
       });
     }
   },
@@ -65,5 +69,6 @@ export default {
     localStorage.removeItem('id_token');
     this.user.authenticated = false;
     this.user.profile = null;
+    router.push('/');
   },
 };

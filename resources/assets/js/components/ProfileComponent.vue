@@ -14,6 +14,7 @@
       <div class="flex">
           <div class="flex-1 text-white text-center px-4 py-2 m-2">
               <p class="float-left font-sans text-3xl tracking-wide">Resume and Feedback</p>
+              <object v-bind:data="auth.user.resume.data.link" type="application/pdf" width="100%" height="500rem"></object>
           </div>
           <div class="flex-1 text-white text-center px-4 py-2 m-2">
               <p class="float-left font-sans tracking-wide"><span class="text-3xl">User Info |</span>  <span class="text-blue-light cursor-pointer" @click="editInfo"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</span></p>
@@ -43,37 +44,14 @@
       return auth.check();
     },
 
-    mounted() {
-      this.getResume();
-      this.getFeedback();
-    },
-
     data() {
       return {
         auth: auth,
         user: auth.user,
-        resume: '',
-        feedback: [],
       };
     },
 
     methods: {
-      getResume() {
-        axios.get('/api/resume').then(response => {
-          this.resume = response.data;
-        }).catch(error => {
-          console.error(error);
-        });
-      },
-
-      getFeedback() {
-        axios.get('/api/feedback').then(response => {
-          this.feedback = response.data;
-        }).catch(error => {
-          console.error(error);
-        })
-      },
-
       editInfo() {
         console.log('clicked');
       },
