@@ -16,9 +16,7 @@
         <p class="font-sans text-1xl text-white pt-4 pb-4 tracking-wide">
             The fact is this: developers, managers and team leads are busy. If your resume doesn't stand out to them in the first pass, you aren't getting another chance.
             What we have done is found developers, managers and team leads who are willing to give us some time to review resumes and give feedback. It's on you to take the feedback
-            and turn it into actionable items. We help you find people who are experienced all over the community who will help you out. Who knows? This could even turn into
-            bigger for you!
-        </p>
+            and turn it into actionable items. We help you find people who are experienced all over the community who will help you out. Who knows? Someone who reviews your resume may ask you in for an interview for their team!</p>
         <p class="font-sans text-1xl text-white pt-4 pb-4 tracking-wide">
             While we are still building out the last few features we need for a solid 1.0, sign up to get updates! We are developers too, so we know how lame it is to get a deluge of emails, so you will get the bare minimum
             emails possible from now until we launch.
@@ -41,6 +39,11 @@
                 </button>
             </div>
         </form>
+
+        <p class="font-sans text-1xl text-white pt-4 pb-4 tracking-wide">
+            Are you interested in helping? This is an open source project, written in PHP, JS, coffee (the liquid kind, not the script), love and passion. If you want to help out, see an issue or anything else, the repo is
+            <a href="https://github.com/matthewtrask/developerresumes">here</a>.
+        </p>
 
         <!--<button class="w-32 bg-yellow hover:yellow-dark text-black font-bold py-2 px-4 rounded">-->
             <!--<a class="no-underline text-black tracking-wide" href="/register">Register</a>-->
