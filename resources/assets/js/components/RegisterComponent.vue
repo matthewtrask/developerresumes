@@ -23,6 +23,13 @@
               </span>
             </div>
 
+                    <ul>
+            <ol class="font-sans text-2xl text-white tracking-wide">Upload your resume</ol>
+            <ol class="font-sans text-2xl text-white tracking-wide">Tweet out the link you receive</ol>
+            <ol class="font-sans text-2xl text-white tracking-wide">Then we will also tweet out the link to our large network of developers</ol>
+            <ol class="font-sans text-2xl text-white tracking-wide">Follow the feedback you’re given</ol>
+        </ul>
+
             <div class="mb-4">
                 <h2 class="font-sans text-2xl tracking-wide">Developer Resumes</h2>
                 <h4 class="font-sans tracking-wide">Register Account</h4>
@@ -60,7 +67,7 @@
                 </label>
             </div>
             <div class="flex items-center justify-between">
-                <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button" @click.prevent="register">
+                <button disabled class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button" @click.prevent="register">
                     Register
                 </button>
             </div>
