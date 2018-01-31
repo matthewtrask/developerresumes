@@ -79,7 +79,7 @@
 </template>
 <script>
   import axios from 'axios';
-  import Moment from 'Moment';
+  import Moment from 'moment';
   import auth from '../auth.js';
   import DrHeader from './HeaderComponent.vue';
   import DrFooter from './FooterComponent.vue';
