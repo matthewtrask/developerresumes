@@ -42,7 +42,7 @@
 
         <p class="font-sans text-1xl text-white pt-4 pb-4 tracking-wide">
             Are you interested in helping? This is an open source project, written in PHP, JS, coffee (the liquid kind, not the script), love and passion. If you want to help out, see an issue or anything else, the repo is
-            <a href="https://github.com/matthewtrask/developerresumes">here</a>.
+            <a class="text-white hover:text-white" href="https://github.com/matthewtrask/developerresumes">here</a>.
         </p>
 
         <!--<button class="w-32 bg-yellow hover:yellow-dark text-black font-bold py-2 px-4 rounded">-->
