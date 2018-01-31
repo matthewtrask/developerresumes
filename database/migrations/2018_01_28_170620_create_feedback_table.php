@@ -17,7 +17,7 @@ class CreateFeedbackTable extends Migration
             $table->increments('id');
             $table->integer('poster_id');
             $table->integer('resume_id');
-            $table->text('feedback');i
+            $table->text('feedback');
             $table->timestamps();
         });
     }
