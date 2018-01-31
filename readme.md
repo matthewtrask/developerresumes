@@ -1,6 +1,6 @@
 # DeveloperResumes
 
-### Get help from professions on your resume
+### Get help from professionals on your resume
 
 DeveloperResumes aims to help junior developers get feedback on their resume from developers, managers and others in the tech industry. We aim to help get you the best feedback possible and give you the tools to make your resume better then it is.
 
