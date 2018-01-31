@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post('/signup', ['uses' => 'Api\EmailController@create']);
+
 Route::post('/register', ['uses' => 'Api\Auth\RegisterController@create']);
 
 Route::get('/resumes', ['uses' => 'Api\ResumeController@index'])->name('getResumes');
