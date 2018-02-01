@@ -3,6 +3,7 @@ import axios from 'axios';
 import HomeComponent from './components/HomeComponent.vue';
 import RegisterComponent from './components/RegisterComponent.vue';
 import LoginComponent from './components/LoginComponent.vue';
+import ForgotPasswordComponent from './components/ForgotPasswordComponent.vue';
 import ProfileComponent from './components/ProfileComponent.vue';
 import ResumesComponent from './components/ResumesComponent.vue';
 import ResumeComponent from './components/ResumeComponent.vue';
@@ -23,17 +24,16 @@ const routes = [
     path: '/register',
     component: RegisterComponent,
     name: 'Register',
-    meta: {
-      requiresAuth: true,
-    }
   },
   {
     path: '/login',
     component: LoginComponent,
     name: 'Login',
-    meta: {
-      requiresAuth: true,
-    }
+  },
+  {
+    path: '/forgot-password',
+    component: ForgotPasswordComponent,
+    name: 'ForgotPassword',
   },
   {
     path: '/profile',

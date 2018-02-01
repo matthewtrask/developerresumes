@@ -1,3 +1,5 @@
+'use strict';
+
 import axios from 'axios';
 import router from './routes.js';
 
@@ -71,4 +73,10 @@ export default {
     this.user.profile = null;
     router.push('/');
   },
+
+  resetPassword(context, email) {
+    return axios.post('/password/email', { email: email }).then(response => {
+
+    });
+  }
 };
