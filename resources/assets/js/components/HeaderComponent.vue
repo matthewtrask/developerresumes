@@ -11,6 +11,7 @@
             <div class="flex-1 text-center px-4 py-2 m-2">
                 <a class="no-underline text-white tracking-wide" href="/resumes"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Resumes</a>
                 <a v-if="!user.authenticated" class="no-underline pl-4 text-white tracking-wide" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                <a v-if="!user.authenticated" class="no-underline pl-4 text-white tracking-wide" href="/register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
                 <a v-if="user.authenticated" class="no-underline pl-4 text-white tracking-wide" href="/profile"><i class="fa fa-user" aria-hidden="true"></i> {{ user.profile.data.name }}</a>
                 <a v-if="user.authenticated" class="no-underline pl-4 text-white tracking-wide" href @click.prevent="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
             </div>
