@@ -22,7 +22,7 @@
             emails possible from now until we launch.
         </p>
 
-        <form class="w-full max-w-sm">
+        <form v-on:submit.prevent="emailSignup" class="w-full max-w-sm">
 
             <div class="bg-green-lightest border border-green-light text-green-dark px-4 py-3 rounded relative" role="alert" v-if="flashSuccess">
                 <strong class="font-bold">Yay!</strong>
@@ -75,7 +75,12 @@
 
     methods: {
       emailSignup() {
+        if (this.email === '') {
+          return false;
+        }
+
         axios.post('/api/signup', { email: this.email }).then(response => {
+          this.email = '';
           this.flashSuccess = true;
 
           setTimeout(() => {
