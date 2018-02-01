@@ -1,12 +1,6 @@
 <style lang='scss' scoped>
-    .container {
-        margin-right: auto;
-        margin-left: auto;
-    }
-
     .flex {
         position: absolute;
-        left: 32%;
         bottom: 0;
     }
 </style>
