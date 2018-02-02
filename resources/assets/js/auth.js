@@ -6,6 +6,7 @@ import router from './routes.js';
 export default {
   user: {
     authenticated: false,
+    email: null,
     profile: null,
     resume: null,
     feedback: null,
@@ -23,6 +24,8 @@ export default {
         },
       }).then(response => {
         this.user.authenticated = true;
+        this.user.email = response.data.data.email,
+        this.user.id = response.data.data.id,
         this.user.profile = response.data.data.profile;
         this.user.resume = response.data.data.resume;
         this.user.feedback = response.data.data.feedback;

@@ -12,7 +12,7 @@
                 <a class="no-underline text-white tracking-wide" href="/resumes"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Resumes</a>
                 <a disabled v-if="!user.authenticated" class="no-underline pl-4 text-white tracking-wide" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
                 <a disabled v-if="!user.authenticated" class="no-underline pl-4 text-white tracking-wide" href="/register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
-                <a disbaled v-if="user.authenticated" class="no-underline pl-4 text-white tracking-wide" href="/profile"><i class="fa fa-user" aria-hidden="true"></i> {{ user.profile.data.name }}</a>
+                <a disbaled v-if="user.authenticated" class="no-underline pl-4 text-white tracking-wide" href="/profile"><i class="fa fa-user" aria-hidden="true"></i> <span v-if="user.profile.data.length !== 0">{{ user.profile.data.name }}</span><span v-else>Profile</span></a>
                 <a disabled v-if="user.authenticated" class="no-underline pl-4 text-white tracking-wide" href @click.prevent="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
             </div>
         </div>

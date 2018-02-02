@@ -25,3 +25,5 @@ Route::delete('/resumes/{id}', 'Api\ResumeController@delete')->name('deleteResum
 
 Route::middleware('auth:api')->post('/feedback', ['uses' => 'Api\FeedbackController@create']);
 Route::middleware('auth:api')->get('/user', ['uses' => 'Api\UsersController@fetch']);
+Route::middleware('auth:api')->post('/profile', ['uses' => 'Api\ProfileController@create']);
+Route::middleware('auth:api')->put('/profile', ['uses' => 'Api\ProfileController@edit']);

@@ -16,6 +16,8 @@ class ProfileTransformer extends TransformerAbstract
     {
         return [
             'name' => $profile->fullName(),
+            'firstName' => $profile->getFirstName(),
+            'lastName' => $profile->getLastName(),
             'preferredName' => $profile->getPreferredName(),
             'email' => $profile->getEmail(),
             'location' => $profile->getLocation(),

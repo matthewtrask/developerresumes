@@ -14,12 +14,17 @@ class ResumeTransformer extends TransformerAbstract
         'feedback'
     ];
 
+    public function __construct()
+    {
+
+    }
+
     /**
      * A Fractal transformer.
      *
      * @return array
      */
-    public function transform(Resume $resume)
+    public function transform($resume)
     {
         return [
             'id' => $resume->getId(),
@@ -29,11 +34,19 @@ class ResumeTransformer extends TransformerAbstract
 
     public function includeProfile(Resume $resume)
     {
-        return $this->item($resume->user->profile, new ProfileTransformer());
+        if (!is_null($resume->user->profile)) {
+            return $this->item($resume->user->profile, new ProfileTransformer());
+        }
+
+        return $this->null();
     }
 
     public function includeFeedback(Resume $resume)
     {
-        return $this->collection($resume->feedback, new FeedbackTransformer());
+        if (!is_null($resume->feedback)) {
+            return $this->collection($resume->feedback, new FeedbackTransformer());
+        }
+
+        return $this->null();
     }
 }

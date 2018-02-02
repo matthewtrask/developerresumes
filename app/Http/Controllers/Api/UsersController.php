@@ -33,7 +33,11 @@ class UsersController extends Controller
         return $this->response
             ->header('Content-type', 'application/json')
             ->setStatusCode(200)
-            ->setContent(fractal()->item($user)->transformWith($this->transformer)->parseIncludes(['profile', 'resume', 'feedback'])->toArray());
+            ->setContent(fractal()->item($user)->transformWith($this->transformer)
+                ->includeResume()
+                ->includeFeedback()
+                ->includeProfile()
+                ->toArray());
 
     }
 }

@@ -19,20 +19,34 @@ class UserTransformer extends TransformerAbstract
             'id' => $user->userId(),
             'email' => $user->getEmail(),
         ];
+
+        return [];
     }
 
     public function includeProfile(User $user)
     {
-        return $this->item($user->profile, new ProfileTransformer());
+        if (!is_null($user->profile)) {
+            return $this->item($user->profile, new ProfileTransformer());
+        }
+
+        return $this->null();
     }
 
     public function includeResume(User $user)
     {
-        return $this->item($user->resume, new ResumeTransformer());
+        if (!is_null($user->resume)) {
+            return $this->item($user->resume, new ResumeTransformer());
+        }
+
+        return $this->null();
     }
 
     public function includeFeedback(User $user)
     {
-        return $this->collection($user->resume->feedback, new FeedbackTransformer());
+        if (!is_null($user->resume)) {
+            return $this->collection($user->resume->feedback, new FeedbackTransformer());
+        }
+
+        return $this->null();
     }
 }
