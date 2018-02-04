@@ -16,6 +16,7 @@
       <div class="flex">
           <div class="flex-1 text-white text-center px-4 py-2 m-2">
               <p class="float-left font-sans text-3xl tracking-wide pb-2">Resume and Feedback</p>
+              <p class="text-right cursor-pointer pl-4 pt-2 text-left tracking-wide text-white font-sans no-decoration" @click.prevent="removeResume"><i class="fa fa-minus-circle"></i> Remove Resume</p>
               <br><br>
               <div v-if="user.resume.data.length === 0" class="relative w-64 mb-4">
                   <vue-dropzone
@@ -212,6 +213,19 @@
     },
 
     methods: {
+      removeResume() {
+        let authToken = localStorage.getItem('id_token');
+
+        axios.delete(`/api/resumes/${this.user.resume.data.id}`, {
+          headers: {
+            'Authorization': `Bearer ${authToken}`,
+          },
+        }).then(response => {
+          auth.check();
+        }).catch(error => {
+          console.log(error);
+        });
+      },
 
       showSuccess() {
         return auth.check();

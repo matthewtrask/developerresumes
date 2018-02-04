@@ -101,14 +101,13 @@ class ResumeController extends Controller
      *
      * @return JsonResponse
      */
-    public function deleteResume(Request $request, int $resumeId): JsonResponse
+    public function delete(Request $request, int $resumeId): JsonResponse
     {
-        $user = $request->user();
+        $userId = $request->user()->userId();
 
-        $resume = $this->resume
-            ->where('user_id', $user->id)
-            ->where('id', $resumeId)
-            ->findOrFail();
+        $resume = $this->resume->byUser($userId)->byResume($resumeId)->first();
+
+        Storage::disk('s3')->delete(snake_case($request->user()->name) . '/'. 'resume.pdf');
 
         $resume->delete();
 
