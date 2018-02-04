@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -70,5 +71,15 @@ class Resume extends Model
     public function getLink() : string
     {
         return $this->resume;
+    }
+
+    public function scopeByUser(Builder $query, int $userId)
+    {
+        return $query->where('user_id', '=', $userId);
+    }
+
+    public function scopeByResume(Builder $query, int $resumeId)
+    {
+        return $query->where('id', '=', $resumeId);
     }
 }

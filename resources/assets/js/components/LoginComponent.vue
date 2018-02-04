@@ -36,7 +36,7 @@
                 </label>
             </div>
             <div class="flex items-center justify-between">
-                <button class="shadow bg-yellow-dark hover:bg-yellow-darkest text-black font-bold py-2 px-4 rounded" type="button" @click.prevent="login">
+                <button class="shadow bg-yellow-dark hover:bg-yellow-dark text-black font-bold py-2 px-4 rounded" type="button" @click.prevent="login">
                     Login
                 </button>
             </div>
@@ -84,7 +84,7 @@
 
         setTimeout(() => {
           auth.signin(this, this.username, this.password, this.rememberMe);
-        }, 5000);
+        }, 1500);
 
       },
     },

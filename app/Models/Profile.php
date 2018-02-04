@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -12,6 +13,11 @@ class Profile extends Model
     public function user() : BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function scopeByUserId(Builder $query, int $userId)
+    {
+        return $query->where('user_id', '=', $userId);
     }
 
     public function fullName()
@@ -54,6 +60,56 @@ class Profile extends Model
         $link = preg_split('#/#', $this->getGithub());
 
         return $link[3];
+    }
+
+    public function setFirstName(string $firstName)
+    {
+        $this->first_name = $firstName;
+    }
+
+    public function setLastName(string $lastName)
+    {
+        $this->last_name = $lastName;
+    }
+
+    public function setPreferredName(string $preferredName)
+    {
+        $this->preferred_name = $preferredName;
+    }
+
+    public function setLocation(string $location)
+    {
+        $this->location = $location;
+    }
+
+    public function setTwitter(string $twitter)
+    {
+        $this->twitter_link = $twitter;
+    }
+
+    public function setGithub(string $github)
+    {
+        $this->github_link = $github;
+    }
+
+    public function setBlog(string $blog)
+    {
+        $this->blog_link = $blog;
+    }
+
+    public function setUserId(int $userId)
+    {
+        $this->user_id = $userId;
+    }
+
+    public function getFirstName()
+    {
+        return $this->first_name;
+    }
+
+    public function getLastName()
+    {
+        return $this->last_name;
     }
 }
 

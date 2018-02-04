@@ -77,13 +77,15 @@ class ResumeController extends Controller
     public function upload(ResumeUploadRequest $request): JsonResponse
     {
         $user = $request->user();
-        $file = $request->file('resume');
+        $file = $request->file('file');
 
-        $path = Storage::putFileAs(
-            'resumes/'. snake_case($user->name),
+
+        $path = Storage::disk('s3')->putFileAs(
+            snake_case($user->name),
             $file,
-            'resume.' . $file->guessExtension()
-        );
+            'resume.' . $file->guessExtension());
+
+        Storage::disk('s3')->setVisibility(snake_case($user->name) .'/'.'resume.' . $file->guessExtension(), 'public');
 
         $resume = $this->resume->fill([
             'user_id' => $user->id,
@@ -99,14 +101,13 @@ class ResumeController extends Controller
      *
      * @return JsonResponse
      */
-    public function deleteResume(Request $request, int $resumeId): JsonResponse
+    public function delete(Request $request, int $resumeId): JsonResponse
     {
-        $user = $request->user();
+        $userId = $request->user()->userId();
 
-        $resume = $this->resume
-            ->where('user_id', $user->id)
-            ->where('id', $resumeId)
-            ->findOrFail();
+        $resume = $this->resume->byUser($userId)->byResume($resumeId)->first();
+
+        Storage::disk('s3')->delete(snake_case($request->user()->name) . '/'. 'resume.pdf');
 
         $resume->delete();
 
