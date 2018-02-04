@@ -27,3 +27,4 @@ Route::middleware('auth:api')->post('/feedback', ['uses' => 'Api\FeedbackControl
 Route::middleware('auth:api')->get('/user', ['uses' => 'Api\UsersController@fetch']);
 Route::middleware('auth:api')->post('/profile', ['uses' => 'Api\ProfileController@create']);
 Route::middleware('auth:api')->put('/profile', ['uses' => 'Api\ProfileController@edit']);
+Route::middleware('auth:api')->post('/resumes/upload', 'Api\ResumeController@upload')->name('uploadResume');

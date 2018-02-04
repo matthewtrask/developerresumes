@@ -1,5 +1,7 @@
 <style lang='scss'>
-
+    .vue-dropzone {
+        border: 2px dashed #8795A1;
+    }
 </style>
 <template>
     <div>
@@ -14,9 +16,16 @@
       <div class="flex">
           <div class="flex-1 text-white text-center px-4 py-2 m-2">
               <p class="float-left font-sans text-3xl tracking-wide pb-2">Resume and Feedback</p>
-              <button v-if="user.resume.data.length === 0" class="shadow bg-yellow-dark hover:bg-yellow-dark text-black font-bold py-2 pb-2 px-4 rounded inline-flex items-center">
-                  <span><i class="fa fa-upload"></i> Upload</span>
-              </button>
+              <br><br>
+              <div v-if="user.resume.data.length === 0" class="relative w-64 mb-4">
+                  <vue-dropzone
+                    ref="myVueDropzone"
+                    id="dropzone"
+                    :options="dropzoneOptions"
+                    v-on:vdropzone-thumbnail="thumbnail"
+                    v-on:vdropzone-success="showSuccess">
+                  </vue-dropzone>
+              </div>
               <object v-bind:data="user.resume.data.link" type="application/pdf" width="100%" height="500rem"></object>
           </div>
           <div class="flex-1 text-white text-center px-4 py-2 m-2">
@@ -158,6 +167,8 @@
 <script>
   import axios from 'axios';
   import auth from '../auth.js';
+  import VueDropzone from 'vue2-dropzone';
+  import 'vue2-dropzone/dist/vue2Dropzone.css';
   import DrHeader from './HeaderComponent.vue';
   import DrFooter from './FooterComponent.vue';
   import DrModal from './Modal.vue';
@@ -182,6 +193,14 @@
         github: '',
         twitter: '',
         blog: '',
+        dropzoneOptions: {
+          acceptedFiles: 'application/pdf',
+          url: '/api/resumes/upload',
+          thumbnailWidth: 150,
+          maxFilesize: 2,
+          dictDefaultMessage: "<i class='fa fa-cloud-upload'></i> UPLOAD",
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('id_token')}` },
+          },
       };
     },
 
@@ -193,6 +212,11 @@
     },
 
     methods: {
+
+      showSuccess() {
+        return auth.check();
+      },
+
       editInfo() {
         this.showEditModal = !this.showEditModal;
       },
@@ -260,6 +284,7 @@
       DrHeader,
       DrFooter,
       DrModal,
+      VueDropzone,
     }
   };
 </script>

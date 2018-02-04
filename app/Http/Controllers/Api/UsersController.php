@@ -38,6 +38,5 @@ class UsersController extends Controller
                 ->includeFeedback()
                 ->includeProfile()
                 ->toArray());
-
     }
 }

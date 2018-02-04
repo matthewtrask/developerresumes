@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use App\Models\Resume;
+use Illuminate\Support\Facades\Storage;
 use League\Fractal\TransformerAbstract;
 
 class ResumeTransformer extends TransformerAbstract
@@ -13,11 +14,6 @@ class ResumeTransformer extends TransformerAbstract
         'profile',
         'feedback'
     ];
-
-    public function __construct()
-    {
-
-    }
 
     /**
      * A Fractal transformer.

@@ -77,13 +77,15 @@ class ResumeController extends Controller
     public function upload(ResumeUploadRequest $request): JsonResponse
     {
         $user = $request->user();
-        $file = $request->file('resume');
+        $file = $request->file('file');
 
-        $path = Storage::putFileAs(
-            'resumes/'. snake_case($user->name),
+
+        $path = Storage::disk('s3')->putFileAs(
+            snake_case($user->name),
             $file,
-            'resume.' . $file->guessExtension()
-        );
+            'resume.' . $file->guessExtension());
+
+        Storage::disk('s3')->setVisibility(snake_case($user->name) .'/'.'resume.' . $file->guessExtension(), 'public');
 
         $resume = $this->resume->fill([
             'user_id' => $user->id,
