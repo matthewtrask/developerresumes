@@ -73,7 +73,7 @@ class ResumeControllerTest extends TestCase
 
         $this->assertSame($user->id, $data['user_id']);
 
-        $uploadedFile = 'resumes/'. snake_case($user->name). '/resume.pdf';
+        $uploadedFile = 'resumes/'.snake_case($user->name).'/resume.pdf';
         Storage::disk()->assertExists($uploadedFile);
     }
 }

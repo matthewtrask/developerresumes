@@ -3,7 +3,6 @@
 namespace App\Transformers;
 
 use App\Models\Resume;
-use Illuminate\Support\Facades\Storage;
 use League\Fractal\TransformerAbstract;
 
 class ResumeTransformer extends TransformerAbstract
@@ -12,7 +11,7 @@ class ResumeTransformer extends TransformerAbstract
 
     protected $availableIncludes = [
         'profile',
-        'feedback'
+        'feedback',
     ];
 
     /**
@@ -23,8 +22,8 @@ class ResumeTransformer extends TransformerAbstract
     public function transform($resume)
     {
         return [
-            'id' => $resume->getId(),
-            'link' => $this->s3link . $resume->getLink(),
+            'id'   => $resume->getId(),
+            'link' => $this->s3link.$resume->getLink(),
         ];
     }
 

@@ -10,13 +10,13 @@ class UserTransformer extends TransformerAbstract
     protected $availableIncludes = [
         'profile',
         'resume',
-        'feedback'
+        'feedback',
     ];
 
     public function transform(User $user)
     {
         return [
-            'id' => $user->userId(),
+            'id'    => $user->userId(),
             'email' => $user->getEmail(),
         ];
 

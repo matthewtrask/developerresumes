@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Transformers\UserTransformer;
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Transformers\UserTransformer;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UsersController extends Controller

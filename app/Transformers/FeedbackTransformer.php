@@ -15,8 +15,8 @@ class FeedbackTransformer extends TransformerAbstract
     public function transform(Feedback $feedback)
     {
         return [
-            'poster' => $feedback->poster->profile->fullName(),
-            'feedback' => $feedback->getFeedback(),
+            'poster'    => $feedback->poster->profile->fullName(),
+            'feedback'  => $feedback->getFeedback(),
             'createdAt' => $feedback->getCreatedAt(),
         ];
     }

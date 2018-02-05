@@ -18,14 +18,14 @@ class ResumeUploadRequest extends FormRequest
 
     /**
      * Must be a valid file with .pdf, .doc, or .docx extension
-     * and can not be bigger than 1.5 mb
+     * and can not be bigger than 1.5 mb.
      *
      * @return array
      */
     public function rules(): array
     {
         return [
-            'resume' => 'file|mimes:pdf,doc,docx|max:1500'
+            'resume' => 'file|mimes:pdf,doc,docx|max:1500',
         ];
     }
 }
