@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasOne(Resume::class, 'user_id', 'id');
     }
 
+    public function name()
+    {
+        return $this->preferred_name;
+    }
+
     public function userId() : int
     {
         return $this->id;

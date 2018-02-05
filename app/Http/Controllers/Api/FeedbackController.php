@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\FeedbackRequest;
+use App\Mail\FeedbackReceived;
 use App\Models\Feedback;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Mail;
 
 class FeedbackController extends Controller
 {
@@ -25,6 +27,14 @@ class FeedbackController extends Controller
 
         $feedback->save();
 
+        $this->sendFeedbackEmail($request->user());
+        
         return $this->response->setStatusCode(201);
+    }
+
+    private function sendFeedbackEmail($user)
+    {
+        return Mail::to($user)
+            ->send(new FeedbackReceived($user));
     }
 }
