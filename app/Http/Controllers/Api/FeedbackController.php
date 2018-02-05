@@ -28,7 +28,7 @@ class FeedbackController extends Controller
         $feedback->save();
 
         $this->sendFeedbackEmail($request->user());
-        
+
         return $this->response->setStatusCode(201);
     }
 
