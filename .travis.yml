@@ -6,6 +6,7 @@ php:
 install:
   - travis_retry composer install --prefer-dist --no-interaction --no-suggest
   - cp .env.example .env
+  - php artisan key:generate
 
 script:
   - vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
