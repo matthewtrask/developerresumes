@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Response;
 
@@ -19,8 +19,8 @@ class RegisterController extends Controller
     public function create(RegisterRequest $request)
     {
         $user = User::create([
-            'name' => $request->getEmail(),
-            'email' => $request->getEmail(),
+            'name'     => $request->getEmail(),
+            'email'    => $request->getEmail(),
             'password' => bcrypt($request->getPassword()),
         ]);
 

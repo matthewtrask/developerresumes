@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +26,3 @@ Route::middleware('auth:api')->post('/profile', ['uses' => 'Api\ProfileControlle
 Route::middleware('auth:api')->put('/profile', ['uses' => 'Api\ProfileController@edit']);
 Route::middleware('auth:api')->post('/resumes/upload', ['uses' => 'Api\ResumeController@upload'])->name('uploadResume');
 Route::middleware('auth:api')->delete('/resumes/{id}', ['uses' => 'Api\ResumeController@delete'])->name('deleteResume');
-

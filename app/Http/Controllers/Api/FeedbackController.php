@@ -17,14 +17,14 @@ class FeedbackController extends Controller
     public function create(FeedbackRequest $request)
     {
         $userId = $request->user()->userId();
-    
+
         $feedback = new Feedback();
         $feedback->setResumeId($request->getResumeId());
         $feedback->setPosterId($userId);
         $feedback->setFeedback($request->getFeedback());
-        
-        $feedback->save();   
-        
+
+        $feedback->save();
+
         return $this->response->setStatusCode(201);
     }
 }

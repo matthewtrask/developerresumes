@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Class Resume
+ * Class Resume.
  *
- * @package App\Models
  *
  * @property int    $id
  * @property int    $user_id
@@ -59,7 +58,7 @@ class Resume extends Model
         return [
             'id'         => $this->getAttribute('id'),
             'path'       => $this->getAttribute('resume'),
-            'created_at' => $this->created_at->toIso8601String()
+            'created_at' => $this->created_at->toIso8601String(),
         ];
     }
 

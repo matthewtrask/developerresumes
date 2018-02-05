@@ -112,4 +112,3 @@ class Profile extends Model
         return $this->last_name;
     }
 }
-

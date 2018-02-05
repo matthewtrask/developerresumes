@@ -71,25 +71,25 @@ class ResumeController extends Controller
     /**
      * @param ResumeUploadRequest $request
      *
-     * @return JsonResponse
      * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     *
+     * @return JsonResponse
      */
     public function upload(ResumeUploadRequest $request): JsonResponse
     {
         $user = $request->user();
         $file = $request->file('file');
 
-
         $path = Storage::disk('s3')->putFileAs(
             snake_case($user->name),
             $file,
-            'resume.' . $file->guessExtension());
+            'resume.'.$file->guessExtension());
 
-        Storage::disk('s3')->setVisibility(snake_case($user->name) .'/'.'resume.' . $file->guessExtension(), 'public');
+        Storage::disk('s3')->setVisibility(snake_case($user->name).'/'.'resume.'.$file->guessExtension(), 'public');
 
         $resume = $this->resume->fill([
             'user_id' => $user->id,
-            'resume'  => $path
+            'resume'  => $path,
         ])->save();
 
         return response()->json($resume);
@@ -107,7 +107,7 @@ class ResumeController extends Controller
 
         $resume = $this->resume->byUser($userId)->byResume($resumeId)->first();
 
-        Storage::disk('s3')->delete(snake_case($request->user()->name) . '/'. 'resume.pdf');
+        Storage::disk('s3')->delete(snake_case($request->user()->name).'/'.'resume.pdf');
 
         $resume->delete();
 
