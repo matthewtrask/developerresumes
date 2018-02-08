@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\Email;
-use App\Mail\OpenAppEmail;
 use Illuminate\Console\Command;
 
 class AppOpen extends Command
