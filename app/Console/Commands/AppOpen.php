@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Email;
 use App\Mail\OpenAppEmail;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class AppOpen extends Command
 {
@@ -46,10 +47,10 @@ class AppOpen extends Command
      */
     public function handle()
     {
-        $emails = $this->email->pluck('email');
+        $emails = $this->email->get();
 
         $emails->each(function ($email) {
-            \Mail::to($email)->send(new AppOpenEmail());
+            Mail::to($email->email)->send(new OpenAppEmail());
         });
     }
 }
