@@ -7,6 +7,7 @@ import ForgotPasswordComponent from './components/ForgotPasswordComponent.vue';
 import ProfileComponent from './components/ProfileComponent.vue';
 import ResumesComponent from './components/ResumesComponent.vue';
 import ResumeComponent from './components/ResumeComponent.vue';
+import NotFoundComponent from './components/NotFoundComponent.vue';
 import auth from './auth.js';
 
 const user = {
@@ -52,7 +53,12 @@ const routes = [
     path: '/resumes/:id',
     component: ResumeComponent,
     name: 'Resume',
-  }
+  },
+  {
+    path: '*',
+    component: NotFoundComponent,
+    name: 'NotFoundComponent'
+  },
 ];
 
 const router = new VueRouter({
