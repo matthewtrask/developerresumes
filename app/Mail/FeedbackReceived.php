@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class FeedbackReceived extends Mailable
 {
@@ -16,6 +15,7 @@ class FeedbackReceived extends Mailable
      * @var User
      */
     public $user;
+
     /**
      * Create a new message instance.
      *
