@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Email;
 use App\Mail\OpenAppEmail;
+use App\Models\Email;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
