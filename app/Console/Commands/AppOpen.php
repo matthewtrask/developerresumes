@@ -47,10 +47,10 @@ class AppOpen extends Command
      */
     public function handle()
     {
-        $emails = $this->email->get();
+        $emails = Email::all();
 
-        $emails->each(function ($email) {
-            Mail::to($email->email)->send(new OpenAppEmail());
+        return $emails->each(function ($email) {
+            return Mail::to($email->getEmail())->send(new OpenAppEmail());
         });
     }
 }

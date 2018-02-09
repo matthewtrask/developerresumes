@@ -3,7 +3,7 @@
 
 Hello!
 
-Just wanted to give you a heads up we are quiely going to launch the app tonight!
+Just wanted to give you a heads up we are quietly going to launch the app tonight!
 
 Because this is a soft release, we know there are some things to work out so we really hope for some feedback via
 Github issues. You can find the link to the repository on the website.

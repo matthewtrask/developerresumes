@@ -12,4 +12,9 @@ class Email extends Model
     {
         $this->email = $email;
     }
+
+    public function getEmail() : string
+    {
+        return $this->email;
+    }
 }
