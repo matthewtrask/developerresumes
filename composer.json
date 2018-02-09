@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/homestead": "^7.0",
         "laravel/passport": "^4.0",
