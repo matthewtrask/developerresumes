@@ -63,7 +63,7 @@
             </div>
             <div class="flex items-center justify-between">
 		        <p class="font-sans tracking-wide">We are not taking registrations just yet, please sign up for our email updates and we will announce when we are ready to help!</p>
-                <button disabled class="shadow bg-yellow-dark hover:bg-yellow-dark text-black font-bold py-2 px-4 rounded" type="button" @click.prevent="register">
+                <button class="shadow bg-yellow-dark hover:bg-yellow-dark text-black font-bold py-2 px-4 rounded" type="button" @click.prevent="register">
                     Register
                 </button>
             </div>
