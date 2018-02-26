@@ -56,4 +56,14 @@ class User extends Authenticatable
     {
         return $this->email;
     }
+
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
 }

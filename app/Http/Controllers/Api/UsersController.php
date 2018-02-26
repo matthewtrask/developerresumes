@@ -26,6 +26,15 @@ class UsersController extends Controller
         $this->transformer = $transformer;
     }
 
+    public function index()
+    {
+        $users = User::all();
+
+        return $this->response->header('content-type', 'application/json')
+            ->setStatusCode(200)
+            ->setContent(fractal()->collection($users)->transformWith($this->transformer)->includeProfile()->toArray());
+    }
+
     public function fetch(Request $request)
     {
         $user = User::find($request->user()->userId());

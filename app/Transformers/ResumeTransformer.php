@@ -19,11 +19,11 @@ class ResumeTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform($resume)
+    public function transform(Resume $resume)
     {
         return [
             'id'   => $resume->getId(),
-            'link' => $this->s3link.$resume->getLink(),
+            'link' => $this->s3link . $resume->user->getEmail() . '/' . $resume->getLink(),
         ];
     }
 
