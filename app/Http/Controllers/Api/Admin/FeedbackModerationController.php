@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\FeedbackModerationRequest;
 use App\Mail\FeedbackModerated;
 use App\Models\Feedback;
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 
