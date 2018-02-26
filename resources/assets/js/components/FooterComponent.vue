@@ -1,6 +1,5 @@
 <style lang='scss' scoped>
     .flex {
-        position: absolute;
         bottom: 0;
     }
 </style>

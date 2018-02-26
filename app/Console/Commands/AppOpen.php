@@ -49,7 +49,7 @@ class AppOpen extends Command
     {
         $emails = Email::all();
 
-        return $emails->each(function ($email) {
+        return $emails->map(function ($email) {
             return Mail::to($email->getEmail())->send(new OpenAppEmail());
         });
     }

@@ -18,9 +18,13 @@ class UserTransformer extends TransformerAbstract
         return [
             'id'    => $user->userId(),
             'email' => $user->getEmail(),
+            'role'  => $user->getRole(),
+            'createdAt' => $user->getCreatedAt(),
+            'links' => [
+                'rel' => 'self',
+                'uri' => 'users/' . $user->userId(),
+            ]
         ];
-
-        return [];
     }
 
     public function includeProfile(User $user)

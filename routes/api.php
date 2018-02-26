@@ -21,6 +21,8 @@ Route::get('/resumes/{id}/download', 'Api\ResumeController@downloadResume')->nam
 Route::get('/resumes/{id}', 'Api\ResumeController@getResume')->name('viewResume');
 
 Route::middleware('auth:api')->post('/feedback', ['uses' => 'Api\FeedbackController@create']);
+Route::middleware('auth:api')->get('/feedback', ['uses' => 'Api\FeedbackController@index']);
+Route::middleware('auth:api')->get('/users', ['uses' => 'Api\UsersController@index']);
 Route::middleware('auth:api')->get('/user', ['uses' => 'Api\UsersController@fetch']);
 Route::middleware('auth:api')->post('/profile', ['uses' => 'Api\ProfileController@create']);
 Route::middleware('auth:api')->put('/profile', ['uses' => 'Api\ProfileController@edit']);
