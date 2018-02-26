@@ -15,15 +15,15 @@ class FeedbackTransformer extends TransformerAbstract
     public function transform(Feedback $feedback)
     {
         return [
-            'id' => $feedback->getId(),
+            'id'        => $feedback->getId(),
             'poster'    => $feedback->poster->profile->fullName(),
             'feedback'  => $feedback->getFeedback(),
             'moderated' => $feedback->getModerated(),
             'createdAt' => $feedback->getCreatedAt(),
-            'links' => [
-                'rel' => 'self',
-                'uri' => 'users/' . $feedback->poster->profile->user->userId(),
-                'resume' => 'resumes/' . $feedback->resume->getId(),
+            'links'     => [
+                'rel'    => 'self',
+                'uri'    => 'users/'.$feedback->poster->profile->user->userId(),
+                'resume' => 'resumes/'.$feedback->resume->getId(),
             ],
         ];
     }
