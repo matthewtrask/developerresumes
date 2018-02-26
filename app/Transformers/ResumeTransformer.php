@@ -23,7 +23,7 @@ class ResumeTransformer extends TransformerAbstract
     {
         return [
             'id'   => $resume->getId(),
-            'link' => $this->s3link . '/' . $resume->getLink(),
+            'link' => $this->s3link . $resume->getLink(),
         ];
     }
 
