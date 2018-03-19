@@ -16,14 +16,14 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $user)
     {
         return [
-            'id'    => $user->userId(),
-            'email' => $user->getEmail(),
-            'role'  => $user->getRole(),
+            'id'        => $user->userId(),
+            'email'     => $user->getEmail(),
+            'role'      => $user->getRole(),
             'createdAt' => $user->getCreatedAt(),
-            'links' => [
+            'links'     => [
                 'rel' => 'self',
-                'uri' => 'users/' . $user->userId(),
-            ]
+                'uri' => 'users/'.$user->userId(),
+            ],
         ];
     }
 
