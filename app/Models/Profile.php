@@ -59,7 +59,7 @@ class Profile extends Model
     {
         $link = preg_split('#/#', $this->getGithub());
 
-        return $link[3];
+        return $link[3] ?? null;
     }
 
     public function setFirstName(string $firstName)
