@@ -77,22 +77,22 @@ class Profile extends Model
         $this->preferred_name = $preferredName;
     }
 
-    public function setLocation(string $location)
+    public function setLocation(?string $location)
     {
         $this->location = $location;
     }
 
-    public function setTwitter(string $twitter)
+    public function setTwitter(?string $twitter)
     {
         $this->twitter_link = $twitter;
     }
 
-    public function setGithub(string $github)
+    public function setGithub(?string $github)
     {
         $this->github_link = $github;
     }
 
-    public function setBlog(string $blog)
+    public function setBlog(?string $blog)
     {
         $this->blog_link = $blog;
     }
