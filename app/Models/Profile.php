@@ -40,17 +40,17 @@ class Profile extends Model
         return $this->location;
     }
 
-    public function getTwitter() : string
+    public function getTwitter() : ?string
     {
         return $this->twitter_link;
     }
 
-    public function getGithub() : string
+    public function getGithub() : ?string
     {
         return $this->github_link;
     }
 
-    public function getBlog() : string
+    public function getBlog() : ?string
     {
         return $this->blog_link;
     }
