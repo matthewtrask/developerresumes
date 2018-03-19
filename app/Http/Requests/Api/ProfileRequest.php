@@ -61,11 +61,8 @@ class ProfileRequest extends FormRequest
         return [
             'firstName'       => 'sometimes|required|string',
             'lastName'        => 'sometimes|required|string',
-            'preferredNName'  => 'sometimes|required|string',
+            'preferredName'   => 'sometimes|required|string',
             'location'        => 'sometimes|required|string',
-            'github'          => 'sometimes|required|url',
-            'twitter'         => 'sometimes|required|url',
-            'blog'            => 'sometimes|required|url',
         ];
     }
 }
